@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ご依頼のホームページ</title>
+    <style>
+        /* ページ全体を最初は非表示にしておく（ロック解除時のみ表示） */
+        body { display: none; font-family: sans-serif; text-align: center; padding-top: 50px; }
+    </style>
+    <script>
+        /**
+         * ドメインロック・エンジン
+         * 許可されたURL以外ではコンテンツを物理的に破壊します。
+         */
+        (function() {
+            // 1. 許可するドメイン（ここに橋本様が作成したURLのドメインを入れる）
+            const AUTHORIZED_DOMAIN = "bridge-os.github.io"; 
+
+            // 2. 現在のドメインをチェック
+            const currentDomain = window.location.hostname;
+
+            window.addEventListener('DOMContentLoaded', () => {
+                if (currentDomain !== AUTHORIZED_DOMAIN) {
+                    // 許可外の場合：中身を完全に消去して警告
+                    document.documentElement.innerHTML = `
+                        <div style="padding:100px; color:red; font-weight:bold; font-size:24px;">
+                            LICENSE ERROR: 許可されていないドメインでの実行を検出しました。<br>
+                            このサイトの利用には正規のライセンス契約が必要です。
+                        </div>`;
+                    console.clear();
+                } else {
+                    // 許可されている場合：表示
+                    document.body.style.display = "block";
+                }
+            });
+        })();
+    </script>
+</head>
+<body>
+    <h1>お客様へ納品する完成デザイン</h1>
+    <p>ここにオーダー通りのコンテンツが入ります。</p>
+    <p>このファイル自体を保存して別の場所で開いても、上のスクリプトが作動して表示されません。</p>
+</body>
+</html>
