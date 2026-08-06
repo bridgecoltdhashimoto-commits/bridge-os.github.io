@@ -1,12 +1,12 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#173c70"><title>安全性・検証状況・連携解除｜株式会社BRIDGE</title><link rel="stylesheet" href="style.css"></head><body>
-<div class="top-note"><div class="wrap"><span>運営：株式会社BRIDGE</span><span>Squareとは独立した第三者サービスです。</span></div></div>
-<header class="site-header"><div class="wrap nav"><a class="brand" href="index.html"><span class="brand-mark">B</span><span class="brand-copy"><strong>支払い失敗 再決済サポート</strong><small>BRIDGE Revenue Assurance 4.0</small></span></a><nav class="navlinks"><a class="pill" href="apply.html">対象確認を申込む</a></nav></div></header>
-<main class="page"><div class="wrap page-shell"><div class="page-hero"><div class="eyebrow">安全性・検証状況</div><h1>安全性・検証状況・連携解除</h1><p class="lead">加盟店がSquare連携を判断できるよう、共有しない情報、自動処理の範囲、確認済み事項、解除方法を公開します。</p></div>
-<article class="prose"><h2>加盟店が共有しないもの</h2><ul><li>Squareのログインパスワード</li><li>Personal Access Token</li><li>購入者のカード番号・セキュリティコード</li></ul>
-<h2>Square接続</h2><p>加盟店自身がSquare OAuth画面で要求権限を確認し、連携を許可します。BRIDGEは対象加盟店・店舗を分離して管理します。</p>
-<h2>自動処理の範囲</h2><ul><li>安全条件を満たす支払い失敗だけを自動検知</li><li>購入者へ再決済案内を自動送信</li><li>購入者本人の意思による再決済</li><li>購入者への上乗せ0円</li><li>正常決済・既回収との重複防止</li><li>返金・紛争・不整合時の安全停止</li><li>処理記録と日次照合</li></ul>
-<h2 id="verification">確認済み事項</h2><table><tr><th>テスト環境</th><td>100円の支払い失敗から購入者本人による100円再決済、8円の成果報酬、購入者上乗せ0円、二重決済0件を確認。</td></tr><tr><th>本番pilot</th><td>Worker ACTIVE、OAuth接続、Webhook 1件・Enabled・7イベント、active pilot 1件を確認。</td></tr><tr><th>通知基盤</th><td>購入者通知用Gmailリレーのhealth確認と、承認済みの単発メール実送信1通を確認。</td></tr><tr><th>未確認</th><td>外部加盟店で自然発生した支払い失敗から購入者への自動通知、実回収、実回収率、継続的な成果報酬受領。顧客通知0件、Gmail再送0件。</td></tr></table>
-<div class="notice good">自動案内機能の実装・通知基盤の単発送信確認と、外部加盟店での商用実績は分けて表示しています。回収率や売上を保証するものではありません。</div>
-<h2>連携解除</h2><p>加盟店はSquareの管理画面から対象アプリの連携を解除できます。解除後は新たな処理を停止し、法令・会計・紛争対応等に必要な記録を除き、不要な情報を整理します。</p>
-<h2>障害・不審な動作</h2><p>不審な通知、金額不一致、二重決済の疑い等がある場合は、対象取引を操作せず、会社・店舗名と発生状況を<a href="contact.html">専用お問い合わせフォーム</a>からお知らせください。</p></article></div></main>
-<footer class="site-footer"><div class="wrap footer-grid"><div><div class="footer-title">株式会社BRIDGE<small>BRIDGE Revenue Assurance 4.0</small></div></div><div><div class="footerlinks"><a href="index.html">トップ</a><a href="terms.html">利用条件</a><a href="privacy.html">個人情報</a><a href="legal.html">事業者表示</a><a href="contact.html">お問い合わせ</a></div></div></div></footer></body></html>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#173c70"><title>安全の仕組み・利用停止｜株式会社BRIDGE</title><link rel="stylesheet" href="style.css"></head><body>
+<div class="top-note"><div class="wrap"><span>運営：株式会社BRIDGE</span><span>Squareとは別会社が運営するサービスです。</span></div></div>
+<header class="site-header"><div class="wrap nav"><a class="brand" href="index.html"><span class="brand-mark">B</span><span class="brand-copy"><strong>支払い失敗 売上取り戻しサポート</strong><small>BRIDGE Revenue Assurance 4.0</small></span></a><nav class="navlinks"><a class="pill" href="apply.html">使えるか確認する</a></nav></div></header>
+<main class="page"><div class="wrap page-shell"><div class="page-hero"><div class="eyebrow">安全の仕組み</div><h1>勝手な請求や二重払いを防ぎます。</h1><p class="lead">Squareとつなぐ前に知っておきたいこと、こちらが受け取らない情報、問題が起きた時の止め方を説明します。</p></div>
+<article class="prose"><h2>こちらへ渡さないもの</h2><ul><li>Squareへログインするためのパスワード</li><li>Squareと安全につなぐための秘密情報を、メールや申込み画面で送ること</li><li>お客様のカード番号やカード裏面の番号</li></ul>
+<h2>Squareとのつなぎ方</h2><p>お店や会社の担当者が、Squareの画面で内容を確認してから接続を許可します。パスワードを株式会社BRIDGEへ渡す必要はありません。</p>
+<h2>自動で行うこと</h2><ul><li>支払いができなかった売上の中から、安全に進められるものだけを見つける</li><li>お客様へ、もう一度支払える案内を自動で送る</li><li>お客様が金額を確認して、自分で支払う</li><li>すでに支払い済みのものや、取り戻し済みのものを重ねて処理しない</li><li>返金、争い、金額の違いなどがあれば自動で止める</li><li>行った処理の記録を残し、内容が合っているか確認する</li></ul>
+<h2 id="verification">現在までに確認できたこと</h2><table><tr><th>テスト</th><td>100円の支払い失敗から、お客様が100円をもう一度支払い、BRIDGEへ8円が入るところまで確認しました。お客様への追加料金は0円、二重払いは0件でした。</td></tr><tr><th>案内メール</th><td>お客様へ案内メールを送れることを確認しました。</td></tr><tr><th>本番で使う仕組み</th><td>Squareとの接続、支払い結果の受け取り、記録の保存が動くことを確認しました。</td></tr><tr><th>これから確認すること</th><td>ほかのお店や会社で実際に起きた支払い失敗への自動案内、実際の支払い、BRIDGEへの8％の受取り、長く使った時の結果です。</td></tr></table>
+<div class="notice good">実際に確認できたことと、まだ確認できていないことを分けて表示しています。取り戻せる金額や割合は保証しません。</div>
+<h2>利用をやめる方法</h2><p>Squareの管理画面から、このサービスとの接続を外せます。接続を外した後は、新しい処理を止めます。法律、会計、返金や争いへの対応で必要な記録を除き、不要な情報は整理します。</p>
+<h2>おかしいと思った時</h2><p>身に覚えのない案内、金額の違い、二重払いの疑いがある場合は、その支払いを操作せず、会社・店舗名と状況を<a href="contact.html">専用お問い合わせフォーム</a>からお知らせください。</p></article></div></main>
+<footer class="site-footer"><div class="wrap footer-grid"><div><div class="footer-title">株式会社BRIDGE<small>BRIDGE Revenue Assurance 4.0</small></div></div><div><div class="footerlinks"><a href="index.html">トップ</a><a href="terms.html">利用条件</a><a href="privacy.html">個人情報</a><a href="legal.html">運営会社</a><a href="contact.html">お問い合わせ</a></div></div></div></footer></body></html>
