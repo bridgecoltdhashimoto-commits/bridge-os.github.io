@@ -1,28 +1,63 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex,nofollow,noarchive">
-  <meta name="description" content="Squareの適格なFAILED決済を、購入者本人の意思による再決済で回収する成果報酬型サービス。限定pilot準備中。">
-  <meta name="theme-color" content="#07111f">
-  <title>BRIDGE Revenue Assurance 4.0｜決済エラーによる売上の取りこぼし対策</title>
-  <style>
-    :root{--bg:#07111f;--bg-soft:#0b1728;--card:#101f33;--line:rgba(255,255,255,.12);--text:#f6f8fb;--muted:#aebbd0;--accent:#52e3a4;--accent-2:#67b7ff;--warning:#ffd166;--shadow:0 20px 60px rgba(0,0,0,.28);--radius:24px}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 15% 10%,rgba(82,227,164,.13),transparent 28rem),radial-gradient(circle at 90% 15%,rgba(103,183,255,.13),transparent 26rem),var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;line-height:1.75}a{color:inherit}.wrap{width:min(1120px,calc(100% - 36px));margin:auto}header{position:sticky;top:0;z-index:20;backdrop-filter:blur(16px);background:rgba(7,17,31,.82);border-bottom:1px solid var(--line)}.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:800;letter-spacing:.02em}.brand small{display:block;color:var(--muted);font-size:.72rem;font-weight:600;letter-spacing:.08em}.nav a{text-decoration:none;font-weight:700;font-size:.9rem;border:1px solid var(--line);border-radius:999px;padding:9px 16px}.hero{padding:84px 0 56px}.badge{display:inline-flex;align-items:center;gap:9px;padding:8px 14px;border-radius:999px;border:1px solid rgba(82,227,164,.35);background:rgba(82,227,164,.08);color:#b9f9db;font-weight:800;font-size:.82rem}.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px rgba(82,227,164,.12)}h1{margin:25px 0 20px;font-size:clamp(2.25rem,6vw,5rem);line-height:1.08;letter-spacing:-.045em;max-width:940px}h1 span{color:var(--accent)}.lead{max-width:820px;color:#d6dfec;font-size:clamp(1.05rem,2vw,1.28rem);margin:0}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 22px;border-radius:14px;text-decoration:none;font-weight:900}.btn-primary{background:var(--accent);color:#052014}.btn-secondary{border:1px solid var(--line);background:rgba(255,255,255,.04)}.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px}.fact{padding:22px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.035)}.fact strong{display:block;font-size:1.35rem;color:#fff}.fact span{color:var(--muted);font-size:.9rem}section{padding:64px 0}.section-head{max-width:760px;margin-bottom:28px}.eyebrow{color:var(--accent);font-weight:900;letter-spacing:.08em;font-size:.78rem;text-transform:uppercase}h2{font-size:clamp(1.75rem,4vw,3rem);line-height:1.25;margin:8px 0 12px;letter-spacing:-.03em}.section-head p{color:var(--muted);margin:0}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.card{background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.025));border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}.icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:rgba(82,227,164,.1);border:1px solid rgba(82,227,164,.22);color:var(--accent);font-weight:900;margin-bottom:18px}.card h3{margin:0 0 9px;font-size:1.2rem}.card p{margin:0;color:var(--muted)}.flow{counter-reset:step;display:grid;gap:14px}.flow-item{counter-increment:step;display:grid;grid-template-columns:54px 1fr;gap:18px;align-items:start;padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--bg-soft)}.flow-item::before{content:counter(step);display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:var(--accent);color:#052014;font-weight:900;font-size:1.15rem}.flow-item h3{margin:1px 0 5px}.flow-item p{margin:0;color:var(--muted)}.price{position:relative;overflow:hidden;border-color:rgba(82,227,164,.35)}.price::after{content:"8%";position:absolute;right:-4px;bottom:-40px;font-size:9rem;font-weight:950;color:rgba(82,227,164,.06);line-height:1}.price-number{font-size:clamp(3rem,7vw,5.5rem);font-weight:950;letter-spacing:-.06em;color:var(--accent);line-height:1}.price-number small{font-size:1rem;color:var(--muted);letter-spacing:0}.checklist{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:10px}.checklist li{position:relative;padding-left:28px;color:#dfe7f2}.checklist li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:900}.notice{border:1px solid rgba(255,209,102,.28);background:rgba(255,209,102,.07);border-radius:18px;padding:20px 22px;color:#ffe7a5}details{border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.025);padding:0 20px}details+details{margin-top:10px}summary{cursor:pointer;font-weight:800;padding:18px 0}details p{color:var(--muted);margin:0;padding:0 0 20px}.cta{text-align:center;padding:44px;border:1px solid rgba(103,183,255,.28);border-radius:28px;background:linear-gradient(135deg,rgba(82,227,164,.09),rgba(103,183,255,.09))}.cta p{color:var(--muted);max-width:680px;margin:0 auto 24px}footer{padding:34px 0 50px;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}footer strong{color:var(--text)}.smallprint{max-width:900px}@media(max-width:820px){.facts,.grid-3,.grid-2{grid-template-columns:1fr}.hero{padding-top:58px}.nav a{font-size:.78rem;padding:8px 12px}.card{padding:23px}.cta{padding:32px 22px}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Squareの適格なFAILED決済を、購入者本人の意思による再決済で回収支援する成果報酬型サービス。初期費用・月額0円、回収成功時のみ8%。">
+<meta name="theme-color" content="#07111f">
+<title>BRIDGE Revenue Assurance 4.0｜Square決済エラーの売上回収支援</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header><div class="wrap nav"><div class="brand">BRIDGE Revenue Assurance 4.0<small>LIMITED PILOT INFORMATION</small></div><a href="#contact">先行案内について</a></div></header>
+<header><div class="wrap nav"><a class="brand" href="index.html">BRIDGE Revenue Assurance 4.0<small>SQUARE PAYMENT RECOVERY SUPPORT</small></a><nav class="navlinks"><a href="#safety">安全設計</a><a href="#faq">FAQ</a><a class="pill" href="apply.html">限定pilotに申込む</a></nav></div></header>
 <main>
-<section class="hero"><div class="wrap"><div class="badge"><span class="dot"></span>本番限定pilot 準備中</div><h1>決済エラーで失った売上に、<br><span>もう一度だけ機会を。</span></h1><p class="lead">Squareで「FAILED」となった適格な決済だけを対象に、購入者本人が内容を確認し、自分の意思で再決済できる機会を提供する成果報酬型サービスです。</p><div class="hero-actions"><a class="btn btn-primary" href="#service">内容を見る</a><a class="btn btn-secondary" href="#safety">安全設計を見る</a></div><div class="facts" aria-label="主な特徴"><div class="fact"><strong>初期・月額 0円</strong><span>固定費なし</span></div><div class="fact"><strong>成功時のみ 8％</strong><span>Square Application Fee</span></div><div class="fact"><strong>無断再課金 0件</strong><span>購入者本人が再決済</span></div></div></div></section>
-<section id="service"><div class="wrap"><div class="section-head"><div class="eyebrow">Problem</div><h2>決済失敗は、そのまま売上損失になることがあります。</h2><p>忙しい現場での個別確認や連絡を減らし、回収できる可能性がある売上だけを安全に再案内します。</p></div><div class="grid-3"><article class="card"><div class="icon">01</div><h3>FAILEDだけを対象</h3><p>Square上で適格と確認できる決済失敗のみを対象とし、正常な決済には触れません。</p></article><article class="card"><div class="icon">02</div><h3>購入者が自分で判断</h3><p>カードを勝手に再試行せず、購入者本人が内容を確認したうえで再決済します。</p></article><article class="card"><div class="icon">03</div><h3>回収成功時だけ費用発生</h3><p>回収できなければ成果報酬は0円。固定費をかけずに試せます。</p></article></div></div></section>
-<section><div class="wrap grid-2"><div><div class="section-head"><div class="eyebrow">Flow</div><h2>導入後の流れ</h2><p>SquareアカウントのパスワードやPersonal Access Tokenを共有する方式ではありません。</p></div><div class="flow"><div class="flow-item"><div><h3>加盟店がSquare画面で連携を許可</h3><p>必要な権限を確認し、加盟店自身がOAuth認可します。</p></div></div><div class="flow-item"><div><h3>適格なFAILED決済を検知</h3><p>自然発生した決済失敗のうち、条件を満たすものだけを処理します。</p></div></div><div class="flow-item"><div><h3>購入者へ再決済の機会を案内</h3><p>購入内容と金額を確認し、購入者本人の意思で再決済します。</p></div></div><div class="flow-item"><div><h3>回収成功時に8％を自動分配</h3><p>成果報酬はSquare Application Feeで処理されます。</p></div></div></div></div><aside class="card price"><div class="eyebrow">Pricing</div><h2>費用は回収できた時だけ。</h2><div class="price-number">8<small>％ / 回収成功額</small></div><ul class="checklist"><li>初期設定費用 0円</li><li>月額固定費 0円</li><li>回収できなかった場合 0円</li><li>購入者への上乗せ 0円</li></ul><p style="margin-top:22px;color:var(--muted);position:relative;z-index:1">通常のSquare決済手数料は、加盟店とSquare間の契約条件に従います。</p></aside></div></section>
-<section id="safety"><div class="wrap"><div class="section-head"><div class="eyebrow">Safety</div><h2>信用を言葉ではなく、制御で補います。</h2><p>小規模な会社のサービスでも安全性を判断できるよう、禁止事項と停止条件を明確にしています。</p></div><div class="grid-3"><article class="card"><div class="icon">✓</div><h3>自動再課金なし</h3><p>保存カードへの無断再試行や、加盟店に代わる強制請求は行いません。</p></article><article class="card"><div class="icon">✓</div><h3>二重決済を防止</h3><p>既に完了した決済や処理済み案件を再度請求しないための重複防止を行います。</p></article><article class="card"><div class="icon">✓</div><h3>異常時は安全停止</h3><p>返金・紛争・整合性不一致などを検知した場合は、処理を継続せず停止します。</p></article><article class="card"><div class="icon">✓</div><h3>必要最小限の権限</h3><p>SquareのOAuth画面で、加盟店が要求権限を確認してから連携します。</p></article><article class="card"><div class="icon">✓</div><h3>いつでも連携解除</h3><p>加盟店はSquare側の管理画面からアプリ連携を解除できます。</p></article><article class="card"><div class="icon">✓</div><h3>限定pilotから開始</h3><p>最初から全件運用せず、対象と期間を限定して安全性を確認します。</p></article></div></div></section>
-<section><div class="wrap"><div class="notice"><strong>現在の段階：</strong>Sandboxで「100円のFAILED決済 → 購入者本人による再決済 → 8円のApplication Fee」を確認済みです。現在は、実決済・顧客通知を発生させない状態で、本番限定pilot開始前の最終確認を進めています。</div></div></section>
-<section><div class="wrap"><div class="section-head"><div class="eyebrow">FAQ</div><h2>よくある確認事項</h2></div><details><summary>勝手に顧客のカードへ再請求されませんか？</summary><p>されません。購入者本人が内容と金額を確認し、自分の意思で再決済する方式です。</p></details><details><summary>回収できなくても費用がかかりますか？</summary><p>成果報酬は発生しません。初期費用・月額固定費も0円です。</p></details><details><summary>Squareのログイン情報を渡す必要がありますか？</summary><p>ありません。加盟店自身がSquareのOAuth認可画面で、要求される権限を確認して連携します。</p></details><details><summary>どの加盟店でも利用できますか？</summary><p>すべてのFAILED決済が対象になるわけではありません。Square上の決済情報と購入者への案内条件を確認し、pilot対象として適合するかを事前に判断します。</p></details><details><summary>導入後に停止・解除できますか？</summary><p>できます。限定pilotでは安全停止を優先し、Square側からの連携解除も可能です。</p></details></div></section>
-<section id="contact"><div class="wrap"><div class="cta"><div class="eyebrow">Limited Pilot</div><h2>まずは「興味がある」だけで構いません。</h2><p>現在は本番限定pilotの準備段階です。このページをご案内した担当者へ「内容をもう少し知りたい」とご返信ください。電話・訪問での営業は行いません。</p><a class="btn btn-primary" href="#service">内容をもう一度確認する</a></div></div></section>
+<section class="hero"><div class="wrap">
+<div class="badge"><span class="dot"></span>限定pilot受付中</div>
+<h1>決済エラーで失った売上に、<br><span>安全な再決済の機会を。</span></h1>
+<p class="lead">Squareで「FAILED」となった適格な決済だけを対象に、購入者本人が内容を確認し、自分の意思で再決済できる機会を提供します。カードの無断再試行は行いません。</p>
+<div class="actions"><a class="btn btn-primary" href="apply.html">限定pilotに申込む</a><a class="btn btn-secondary" href="#how">仕組みを見る</a></div>
+<div class="stats">
+<div class="card stat"><strong>初期・月額 0円</strong><span>固定費なし</span></div>
+<div class="card stat"><strong>成功時のみ 8％</strong><span>回収できなければ0円</span></div>
+<div class="card stat"><strong>購入者上乗せ 0円</strong><span>元の未払い額だけ</span></div>
+</div>
+</div></section>
+<section id="how"><div class="wrap grid-2">
+<div><div class="section-head"><div class="eyebrow">How it works</div><h2>導入から回収まで</h2><p class="lead">電話・訪問・Zoomは不要です。申込み後、対象確認とSquare連携をオンラインで進めます。</p></div>
+<div class="steps">
+<div class="step"><div><h3>限定pilotへ申込み</h3><p>Squareの利用状況と決済形態を入力します。</p></div></div>
+<div class="step"><div><h3>8％成果報酬へ同意</h3><p>条件を確認し、加盟店自身が正式に同意します。</p></div></div>
+<div class="step"><div><h3>Square画面で連携許可</h3><p>要求権限を確認し、OAuthで接続します。パスワードはBRIDGEへ共有しません。</p></div></div>
+<div class="step"><div><h3>適格なFAILEDだけを処理</h3><p>購入者本人へ再決済の機会を案内し、成功時だけ8％が発生します。</p></div></div>
+</div></div>
+<aside class="card"><div class="eyebrow">Suitable</div><h2>対象になりやすい事業者</h2>
+<ul class="checks"><li>オンライン・予約・会員・継続サービス</li><li>購入者を取引情報から特定できる</li><li>決済エラー後の売上が放置されている</li><li>Squareで一定量の決済を行っている</li></ul>
+<p>対面で即時に別決済へ切り替えられる取引や、購入者へ連絡できない取引は対象にならない場合があります。</p>
+</aside></div></section>
+<section id="safety"><div class="wrap">
+<div class="section-head"><div class="eyebrow">Safety</div><h2>信用を言葉ではなく、制御で補います。</h2><p>正常な決済を触らず、異常時は処理を止める設計です。</p></div>
+<div class="grid-3">
+<article class="card"><h3>無断再課金なし</h3><p>保存カードへの自動再試行は行わず、購入者本人が再決済します。</p></article>
+<article class="card"><h3>二重決済を防止</h3><p>既に完了した決済や処理済み案件への再請求を防ぐ制御を行います。</p></article>
+<article class="card"><h3>異常時は安全停止</h3><p>返金・紛争・整合性不一致などを検知した場合は処理を継続しません。</p></article>
+<article class="card"><h3>OAuthで接続</h3><p>SquareのパスワードやPersonal Access TokenをBRIDGEへ渡す方式ではありません。</p></article>
+<article class="card"><h3>いつでも解除可能</h3><p>加盟店はSquare側からアプリ連携を解除できます。</p></article>
+<article class="card"><h3>限定運用から開始</h3><p>対象加盟店と運用範囲を限定し、実績と安全性を確認しながら進めます。</p></article>
+</div>
+<div class="notice good" style="margin-top:22px"><strong>検証状況：</strong>Sandboxで100円のFAILED決済から購入者本人の再決済、8円のApplication Fee、購入者上乗せ0円、二重決済0件を確認済みです。Production限定pilotの技術監査もPASSしています。実取引での回収実績はこれから確認します。</div>
+</div></section>
+<section><div class="wrap grid-2">
+<div class="card"><div class="eyebrow">Pricing</div><h2>回収できた時だけ8％</h2><ul class="checks"><li>初期設定費用 0円</li><li>月額固定費 0円</li><li>回収できなかった場合 0円</li><li>購入者への追加請求 0円</li></ul><p>通常のSquare決済手数料は、加盟店とSquare間の契約条件に従います。</p></div>
+<div class="card"><div class="eyebrow">Important</div><h2>回収を保証するサービスではありません</h2><p>決済状態、購入者情報、再決済の意思、Squareの仕様などにより、対象外または回収できない場合があります。債権回収代行、無断再課金、法的請求を行うサービスではありません。</p></div>
+</div></section>
+<section id="faq"><div class="wrap"><div class="section-head"><div class="eyebrow">FAQ</div><h2>よくある質問</h2></div>
+<details><summary>Squareのパスワードを渡す必要はありますか？</summary><p>ありません。加盟店自身がSquareのOAuth画面で要求権限を確認し、連携を許可します。</p></details>
+<details><summary>購入者のカードを自動で再試行しますか？</summary><p>しません。購入者本人が内容と金額を確認し、自分の意思で再決済します。</p></details>
+<details><summary>費用はいつ発生しますか？</summary><p>適格なFAILED決済の回収が成功した場合だけ、回収成功額の8％が発生します。</p></details>
+<details><summary>すべてのFAILED決済が対象ですか？</summary><p>いいえ。購入者を特定できること、正常決済や既回収と重複しないことなど、安全条件を満たす必要があります。</p></details>
+<details><summary>電話やZoomでの打合せは必要ですか？</summary><p>不要です。限定pilotの申込みと案内はオンライン・メールで進めます。</p></details>
+</div></section>
+<section><div class="wrap cta"><h2>固定費なしで、売上の取りこぼしを確認しませんか。</h2><p>現在は安全性を優先し、対象を限定して受付しています。申込み後、適合性を確認した事業者へSquare連携手順を案内します。</p><a class="btn btn-primary" href="apply.html">限定pilotに申込む</a></div></section>
 </main>
-<footer><div class="wrap smallprint"><p><strong>運営：</strong>株式会社BRIDGE</p><p>「Square」はBlock, Inc.の商標です。本サービスは株式会社BRIDGEが開発・運営するもので、Squareによる公認・推奨・保証を示すものではありません。本ページは限定pilotの事前説明を目的としており、正式契約条件は導入時の利用規約・同意内容を優先します。</p><p>© 2026 BRIDGE Co., Ltd.</p></div></footer>
-</body>
-</html>
+<footer><div class="wrap"><strong>運営：株式会社BRIDGE</strong><div class="footerlinks"><a href="terms.html">利用条件</a><a href="privacy.html">プライバシーポリシー</a><a href="security.html">安全性・連携解除</a><a href="legal.html">事業者表示</a></div><p>本サービスはSquareとは独立した第三者サービスです。Squareによる承認・保証・推奨を示すものではありません。</p><p>© 2026 BRIDGE Co., Ltd.</p></div></footer>
+</body></html>
