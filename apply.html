@@ -1,1 +1,42 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="BRIDGE Revenue Assurance 4.0 限定pilot申込み"><title>限定pilot申込み｜BRIDGE Revenue Assurance 4.0</title><link rel="stylesheet" href="style.css"></head><body><header><div class="wrap nav"><a class="brand" href="index.html">BRIDGE Revenue Assurance 4.0<small>LIMITED PILOT APPLICATION</small></a><nav class="navlinks"><a class="pill" href="index.html">説明ページへ戻る</a></nav></div></header><main class="page"><div class="wrap grid-2"><section class="prose" style="padding:0"><div class="eyebrow">Application</div><h1>限定pilot申込み</h1><p class="lead">電話・訪問・Zoomは不要です。内容確認後、対象事業者へSquare連携手順をメールで案内します。</p><div class="notice"><strong>現在の受付方法：</strong>入力内容を端末内で整形し、メール画面を開きます。このページ自体は入力情報を保存・送信しません。</div><form id="pilot-form" class="form" style="margin-top:24px"><label>会社・店舗名<input name="company" autocomplete="organization" required maxlength="100"></label><label>担当者名<input name="name" autocomplete="name" required maxlength="80"></label><label>メールアドレス<input name="email" type="email" autocomplete="email" required maxlength="160"></label><label>おおよその月間Square決済額<select name="volume" required><option value="">選択してください</option><option>50万円未満</option><option>50万〜200万円</option><option>200万〜500万円</option><option>500万〜1,000万円</option><option>1,000万円以上</option></select></label><label>主な決済形態<select name="payment_type" required><option value="">選択してください</option><option>オンライン決済</option><option>予約・事前決済</option><option>会員費・月謝・継続サービス</option><option>請求書決済</option><option>対面決済中心</option><option>複数を併用</option></select></label><label>FAILED決済の発生状況<select name="failed" required><option value="">選択してください</option><option>毎月発生している</option><option>ときどき発生する</option><option>把握できていない</option><option>ほとんど発生しない</option></select></label><label>購入者への連絡情報<select name="contactability" required><option value="">選択してください</option><option>取引にメール等が含まれる</option><option>一部の取引に含まれる</option><option>含まれない・不明</option></select></label><label>補足<textarea name="note" maxlength="1000" placeholder="店舗数、サービス内容、現在の困りごとなど（任意）"></textarea></label><label class="inline-check"><input type="checkbox" required><span><a href="terms.html" target="_blank" rel="noopener">利用条件</a>と<a href="privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>を確認しました。</span></label><button class="btn btn-primary" type="submit">申込み内容を作成してメールを開く</button><div id="form-status" class="status" aria-live="polite"></div></form></section><aside class="card"><h2>受付の基準</h2><ul class="checks"><li>Squareを現在利用している</li><li>適格なFAILED決済が見込まれる</li><li>購入者を特定できる可能性がある</li><li>8％成果報酬に同意できる</li><li>無断再課金を求めない</li></ul><p>安全性と運用負担を優先するため、すべての申込みを受け付けるものではありません。</p><hr style="border:0;border-top:1px solid var(--line);margin:24px 0"><p class="help">メールアプリが開かない場合は、入力後に作成される内容をコピーし、<br><strong>bridge.co.ltd.hashimoto@gmail.com</strong><br>へ送信してください。</p></aside></div></main><footer><div class="wrap"><div class="footerlinks"><a href="index.html">トップ</a><a href="terms.html">利用条件</a><a href="privacy.html">プライバシー</a></div></div></footer><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="BRIDGE Revenue Assurance 4.0 限定pilotの対象確認申込み">
+<meta name="theme-color" content="#173c70">
+<title>限定pilot対象確認｜Square決済エラー 売上回収サポート</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へ移動</a>
+<div class="top-note"><div class="wrap"><span>運営：株式会社BRIDGE</span><span>入力内容はこのページのサーバーへ保存しません。</span></div></div>
+<header class="site-header"><div class="wrap nav"><a class="brand" href="index.html"><span class="brand-mark">B</span><span class="brand-copy"><strong>Square決済エラー 売上回収サポート</strong><small>LIMITED PILOT APPLICATION</small></span></a><nav class="navlinks"><a class="pill" href="index.html">説明ページへ戻る</a></nav></div></header>
+<main id="main" class="page"><div class="wrap">
+<div class="page-hero"><div class="eyebrow">Application</div><h1>限定pilotの対象確認</h1><p class="lead">申込みだけでSquare連携や決済処理が始まることはありません。まず対象条件を確認し、適合する事業者へ次の手順をメールで案内します。</p></div>
+<div class="form-shell">
+<section class="form-card" aria-labelledby="form-title"><h2 id="form-title">事業者情報を入力</h2><div class="notice info">入力内容は端末内で申込み文面に変換されます。このページ自体は入力情報をサーバーへ保存・送信しません。</div>
+<form id="pilot-form" class="form" style="margin-top:24px">
+<label>会社・店舗名<input name="company" autocomplete="organization" required maxlength="100"></label>
+<label>担当者名<input name="name" autocomplete="name" required maxlength="80"></label>
+<label class="full">メールアドレス<span class="label-help">Square連携案内を受信できる事業用メール</span><input name="email" type="email" autocomplete="email" required maxlength="160"></label>
+<label>月間Square決済額<select name="volume" required><option value="">選択してください</option><option>50万円未満</option><option>50万〜200万円</option><option>200万〜500万円</option><option>500万〜1,000万円</option><option>1,000万円以上</option></select></label>
+<label>主な決済形態<select name="payment_type" required><option value="">選択してください</option><option>オンライン決済</option><option>予約・事前決済</option><option>会員費・月謝・継続サービス</option><option>請求書決済</option><option>対面決済中心</option><option>複数を併用</option></select></label>
+<label>FAILED決済の発生状況<select name="failed" required><option value="">選択してください</option><option>毎月発生している</option><option>ときどき発生する</option><option>把握できていない</option><option>ほとんど発生しない</option></select></label>
+<label>購入者への連絡情報<select name="contactability" required><option value="">選択してください</option><option>取引にメール等が含まれる</option><option>一部の取引に含まれる</option><option>含まれない・不明</option></select></label>
+<label class="full">補足<textarea name="note" maxlength="1000" placeholder="店舗数、サービス内容、現在の困りごとなど（任意）"></textarea></label>
+<label class="inline-check full"><input type="checkbox" name="terms_ok" required><span><a href="terms.html" target="_blank" rel="noopener">限定pilot利用条件</a>と<a href="privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>を確認しました。</span></label>
+<label class="inline-check full"><input type="checkbox" name="fee_ok" required><span>適格なFAILED決済の回収成功時に、回収成功額の8％が成果報酬として発生することを確認しました。</span></label>
+<label class="inline-check full"><input type="checkbox" name="safety_ok" required><span>無断再課金を行わず、回収を保証するサービスではないことを確認しました。</span></label>
+<div class="form-actions full"><button class="btn btn-primary" type="submit">入力内容を確認する</button><a class="btn btn-secondary" href="index.html">説明ページへ戻る</a></div>
+<div id="form-status" class="status full" aria-live="polite"></div>
+</form>
+<div id="application-preview" class="preview" aria-live="polite"><h3>申込み内容の確認</h3><p class="help">内容を確認し、メールを開いて送信してください。メールが開かない場合はコピーして事業用メールから送信できます。</p><pre id="preview-text"></pre><div class="form-actions"><button id="copy-application" class="btn btn-secondary" type="button">内容をコピー</button><a id="open-mail" class="btn btn-primary" href="#">メールを開く</a></div></div>
+</section>
+<aside class="side-sticky"><div class="card"><div class="eyebrow">Process</div><h2>申込み後の流れ</h2><div class="mini-steps"><div class="mini-step"><span>1</span><div><strong>対象条件を確認</strong><small>FAILED発生状況と安全条件を確認します。</small></div></div><div class="mini-step"><span>2</span><div><strong>利用条件へ正式同意</strong><small>対象事業者へ8％成果報酬の同意画面を案内します。</small></div></div><div class="mini-step"><span>3</span><div><strong>Squareで連携許可</strong><small>加盟店自身がOAuth画面で権限を確認します。</small></div></div><div class="mini-step"><span>4</span><div><strong>限定pilot開始</strong><small>自然発生した適格なFAILEDだけを対象にします。</small></div></div></div></div>
+<div class="notice" style="margin-top:16px"><strong>受付対象を限定しています。</strong><br>安全性と運用負担を優先するため、すべての申込みを受け付けるものではありません。</div></aside>
+</div></div></main>
+<footer class="site-footer"><div class="wrap footer-grid"><div><div class="footer-title">株式会社BRIDGE<small>BRIDGE Revenue Assurance 4.0</small></div><p class="footer-note">連絡先：bridge.co.ltd.hashimoto@gmail.com</p></div><div><div class="footerlinks"><a href="index.html">トップ</a><a href="terms.html">利用条件</a><a href="privacy.html">プライバシー</a><a href="security.html">安全性</a></div></div></div></footer>
+<script src="app.js"></script>
+</body>
+</html>
