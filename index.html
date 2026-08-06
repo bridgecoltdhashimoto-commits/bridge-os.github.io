@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Squareの定期請求・請求書などで支払いに失敗した売上を、購入者本人の再決済につなげるサービス。初期費用・月額0円、回収できた時だけ8％。">
+<meta name="description" content="Squareの定期請求・請求書などで発生した適格な支払い失敗を自動検知し、購入者へ再決済案内を自動送信するサービス。初期費用・月額0円、回収できた時だけ8％。">
 <meta name="theme-color" content="#173c70">
-<meta property="og:title" content="Squareの支払い失敗を再決済へ｜株式会社BRIDGE">
-<meta property="og:description" content="勝手な再請求なし。初期費用・月額0円。回収できた時だけ8％。">
+<meta property="og:title" content="Squareの支払い失敗を自動で再決済へ｜株式会社BRIDGE">
+<meta property="og:description" content="適格な支払い失敗を自動検知・自動案内。勝手な再請求なし。初期費用・月額0円、回収できた時だけ8％。">
 <meta property="og:type" content="website">
-<title>Squareの支払い失敗を再決済へ｜株式会社BRIDGE</title>
+<title>Squareの支払い失敗を自動で再決済へ｜株式会社BRIDGE</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -44,8 +44,8 @@
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <p class="kicker">Square加盟店向け・限定導入受付</p>
-        <h1>Squareの定期請求・請求書で、<span>支払いに失敗した売上を再決済へ。</span></h1>
-        <p class="lead">購入者へ再決済をご案内し、内容と金額を確認した本人が支払います。保存カードへの勝手な再請求は行いません。</p>
+        <h1>Squareの定期請求・請求書で、<span>支払いに失敗した売上を自動で再決済へ。</span></h1>
+        <p class="lead">安全条件を満たす支払い失敗を自動で検知し、購入者へ再決済案内を自動送信します。購入者本人が内容と金額を確認して支払い、保存カードへの勝手な再請求は行いません。</p>
 
         <div class="price-summary" aria-label="料金概要">
           <div><strong>0円</strong><span>初期費用</span></div>
@@ -66,11 +66,11 @@
         <ol class="recovery-steps">
           <li>
             <span class="step-number">1</span>
-            <div><strong>支払い失敗を確認</strong><small>安全条件を満たす取引だけが対象</small></div>
+            <div><strong>支払い失敗を自動検知</strong><small>安全条件を満たす取引だけが対象</small></div>
           </li>
           <li>
             <span class="step-number">2</span>
-            <div><strong>購入者へ再決済を案内</strong><small>内容と金額を確認できる画面へ案内</small></div>
+            <div><strong>購入者へ自動案内</strong><small>内容と金額を確認できる再決済画面へ案内</small></div>
           </li>
           <li>
             <span class="step-number">3</span>
@@ -88,7 +88,7 @@
 
   <section class="trust-band" aria-label="サービスの基本方針">
     <div class="wrap trust-grid">
-      <div><strong>パスワード不要</strong><span>Square画面で加盟店自身が許可</span></div>
+      <div><strong>自動検知・自動案内</strong><span>適格な支払い失敗だけを処理</span></div>
       <div><strong>カード番号を預からない</strong><span>購入者本人がSquareで支払い</span></div>
       <div><strong>勝手な再請求なし</strong><span>本人の意思による再決済</span></div>
       <div><strong>いつでも解除可能</strong><span>Square側から連携解除</span></div>
@@ -133,7 +133,7 @@
     <div class="wrap section-head centered">
       <p class="eyebrow">仕組み</p>
       <h2>加盟店の個別作業を増やさず、3段階で進めます。</h2>
-      <p>通常の案内・判定・処理は定型化し、電話・訪問・Zoomを使いません。</p>
+      <p>通常の検知・案内・処理は自動化し、電話・訪問・Zoomを使いません。</p>
     </div>
     <div class="wrap process-grid">
       <article class="process-card">
@@ -148,8 +148,8 @@
       </article>
       <article class="process-card">
         <span>03</span>
-        <h3>対象取引だけ再決済へ</h3>
-        <p>安全条件を満たす支払い失敗だけを案内し、購入者本人が確認して支払います。</p>
+        <h3>自動検知して再決済を案内</h3>
+        <p>安全条件を満たす支払い失敗だけを自動検知し、購入者へ再決済案内を自動送信します。</p>
       </article>
     </div>
   </section>
@@ -188,8 +188,9 @@
         <ul class="plain-list check-list">
           <li>テスト環境で支払い失敗から本人再決済まで成立</li>
           <li>100円の再決済と8円の成果報酬</li>
-          <li>購入者への上乗せ0円</li>
-          <li>二重決済0件</li>
+          <li>購入者への上乗せ0円・二重決済0件</li>
+          <li>購入者通知用Gmailリレーのhealth確認</li>
+          <li>承認済みの単発メール実送信1通</li>
           <li>本番pilot用の接続・Webhook・データ整合</li>
         </ul>
       </article>
@@ -197,7 +198,8 @@
         <p class="proof-label proof-label-pending">未確認</p>
         <h3>外部加盟店でこれから確認すること</h3>
         <ul class="plain-list dash-list">
-          <li>自然発生した支払い失敗の実回収</li>
+          <li>自然発生した支払い失敗から購入者への自動通知</li>
+          <li>購入者本人による実回収</li>
           <li>外部加盟店からの8％成果報酬の実受領</li>
           <li>業種別・決済方法別の実回収率</li>
           <li>継続運用時の返金・紛争発生状況</li>
@@ -228,6 +230,7 @@
         <h2>申込み前に確認されやすい点</h2>
       </div>
       <div class="faq-list">
+        <details><summary>購入者への案内は自動ですか？</summary><p>はい。安全条件を満たす支払い失敗を自動検知し、購入者へ再決済案内を自動送信する設計です。外部加盟店の自然発生取引での自動通知と実回収は、限定導入でこれから確認します。</p></details>
         <details><summary>すべての支払い失敗を回収できますか？</summary><p>できません。購入者へ連絡できること、正常決済・返金・紛争等と重複しないことなど、安全条件を満たす取引だけが対象です。</p></details>
         <details><summary>申込むとすぐにSquare連携が始まりますか？</summary><p>始まりません。最初は利用対象の確認だけです。条件に合う場合に限り、Square連携の手順をご案内します。</p></details>
         <details><summary>Squareのパスワードを渡す必要はありますか？</summary><p>ありません。加盟店自身がSquareの画面で権限を確認し、連携を許可します。</p></details>
