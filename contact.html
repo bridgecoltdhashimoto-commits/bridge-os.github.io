@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="BRIDGE Revenue Assurance 4.0の専用お問い合わせフォーム。電話・訪問・オンライン面談は行っていません。">
+<meta name="theme-color" content="#173c70">
+<title>専用お問い合わせフォーム｜株式会社BRIDGE</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へ移動</a>
+<div class="top-note"><div class="wrap top-note-inner"><span>運営：株式会社BRIDGE</span><span>電話・訪問・オンライン面談は行っていません</span></div></div>
+<header class="site-header"><div class="wrap nav"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">B</span><span class="brand-copy"><strong>支払い失敗 再決済サポート</strong><small>専用お問い合わせフォーム</small></span></a><nav class="navlinks"><a class="pill pill-secondary" href="index.html">トップへ戻る</a></nav></div></header>
+
+<main id="main" class="application-page">
+<section class="application-hero"><div class="wrap application-hero-inner"><div><p class="eyebrow">専用窓口</p><h1>お問い合わせ内容を定型フォームで受け付けます。</h1><p class="lead">通常の個別相談、電話、訪問、Zoom、LINE対応は行っていません。利用対象の確認は専用の対象確認フォームをご利用ください。</p></div><div class="application-promise"><strong>受付する内容</strong><span>導入手続</span><span>障害・安全上の問題</span><span>個人情報の請求</span><span>法定表示の開示請求</span></div></div></section>
+
+<section class="application-section"><div class="wrap application-layout"><div class="form-card"><div class="form-intro"><div><p class="eyebrow">お問い合わせ</p><h2>必要事項を入力してください。</h2></div><span class="form-time">約2分</span></div>
+<form id="contact-form" class="form" novalidate>
+<label class="full">お問い合わせの種類
+<select name="category" required><option value="">選択してください</option><option value="導入手続・申込み後の確認">導入手続・申込み後の確認</option><option value="障害・不審な通知・二重決済の疑い">障害・不審な通知・二重決済の疑い</option><option value="金額不一致・返金・紛争に関する連絡">金額不一致・返金・紛争に関する連絡</option><option value="個人情報の開示・訂正・削除等の請求">個人情報の開示・訂正・削除等の請求</option><option value="所在地・電話番号等の開示請求">所在地・電話番号等の開示請求</option><option value="その他の事務連絡">その他の事務連絡</option></select>
+</label>
+<label>会社・店舗名<input name="company" autocomplete="organization" required maxlength="100"></label>
+<label>担当者名<input name="name" autocomplete="name" required maxlength="80"></label>
+<label class="full">返信先メールアドレス<input name="email" type="email" autocomplete="email" required maxlength="160"></label>
+<label class="full">お問い合わせ内容<textarea name="message" required maxlength="1500" rows="8" placeholder="対象取引がある場合も、カード番号やパスワードは入力しないでください。"></textarea></label>
+<label class="inline-check full"><input type="checkbox" name="consent" required><span><a href="privacy.html" target="_blank" rel="noopener">個人情報の取扱い</a>を確認しました。</span></label>
+<div class="form-actions full"><button class="btn btn-primary btn-wide" type="submit">送信内容を確認する</button><p class="form-note">入力内容はこのページに保存されません。</p></div><div id="contact-status" class="status full" aria-live="polite"></div>
+</form>
+<section id="contact-result" class="eligibility-result" aria-live="polite" tabindex="-1"><p class="result-badge">送信前の確認</p><h2>内容を確認し、メールアプリから送信してください。</h2><pre id="contact-preview" style="white-space:pre-wrap;word-break:break-word"></pre><div class="result-actions"><a id="contact-mail" class="btn btn-primary" href="#">メールアプリを開く</a><button id="contact-copy" class="btn btn-secondary" type="button">内容をコピー</button></div><p id="contact-note" class="form-note">メールアプリで送信操作を行うと受付完了です。</p></section>
+</div>
+<aside class="application-side"><div class="side-card"><p class="eyebrow">利用対象の確認</p><h2>導入前の対象判定はこちら</h2><p>Squareの利用状況を定型基準で自動判定します。</p><a class="btn btn-secondary" href="apply.html">無料で対象確認する</a></div><div class="side-card side-card-soft"><strong>入力しない情報</strong><p>Squareのパスワード、Personal Access Token、カード番号、セキュリティコードは入力しないでください。</p></div></aside>
+</div></section>
+</main>
+<footer class="site-footer compact-footer"><div class="wrap footer-grid"><div><div class="footer-title">株式会社BRIDGE<small>BRIDGE Revenue Assurance 4.0</small></div></div><div><div class="footerlinks"><a href="index.html">トップ</a><a href="terms.html">利用条件</a><a href="privacy.html">個人情報</a><a href="legal.html">事業者表示</a></div></div></div></footer>
+<script src="contact.js"></script>
+</body>
+</html>
