@@ -15,7 +15,7 @@
   let applicationText="";
 
   const labels={
-    payment_type:{recurring:"会費・月謝・定期サービス",invoice:"請求書での支払い",advance:"予約前・利用前の支払い",online:"ネットでの支払い",mixed:"店頭と店頭以外の両方",pos:"店頭での支払いが中心"},
+    payment_type:{recurring:"会費・月謝・定期サービス",invoice:"請求書での支払い",advance:"予約前・利用前の支払い",ecommerce:"ネット通販・ECサイトでの販売",online:"オンラインサービスの支払い",mixed:"店頭と店頭以外の両方",pos:"店頭での支払いが中心"},
     volume:{under100:"100万円未満","100to500":"100万〜500万円","500to1000":"500万〜1,000万円",over1000:"1,000万円以上",unknown:"分からない"},
     failed:{monthly:"毎月ある",sometimes:"時々ある",unknown:"分からない",rare:"ほとんどない"},
     contactability:{most:"多くのお客様へ送れる",some:"一部のお客様へ送れる",none:"送れない・分からない"}
@@ -34,8 +34,9 @@
     const positive=[];
     const concerns=[];
 
-    if(["recurring","invoice","advance","online"].includes(payment)){
-      score+=3; positive.push("店頭以外での支払いを多く使っています");
+    if(["recurring","invoice","advance","ecommerce","online"].includes(payment)){
+      score+=3;
+      positive.push(payment==="ecommerce"?"ネット通販・ECサイトでSquareを使っています":"店頭以外での支払いを多く使っています");
     }else if(payment==="mixed"){
       score+=1; positive.push("店頭以外での支払いも使っています");
     }else{
@@ -90,6 +91,7 @@
       "お客様への連絡: "+label("contactability",value(data,"contactability")),
       "",
       "確認した内容:",
+      "- 事業者としての利用",
       "- 利用条件と個人情報の取扱い",
       "- 取り戻せた時だけ8％",
       "- 保存カードへの勝手な再請求なし",
@@ -125,12 +127,12 @@
     if(assessment.grade==="A"){
       title.textContent="使える可能性が高いです。";
       message.textContent="支払いの方法、支払い失敗の回数、お客様へ案内できる条件がそろっています。";
-      note.textContent="確認結果をメールで送ると、内容を確認したうえで次の手順をご案内します。";
+      note.textContent="次へ進む場合は、確認結果をメールアプリから送信してください。送信後、受付順に内容を確認します。";
       actions.hidden=false;
     }else if(assessment.grade==="B"){
       title.textContent="もう少し確認が必要です。";
       message.textContent="使える可能性はありますが、対象になる支払いの量や、お客様へ案内できる範囲を確認する必要があります。";
-      note.textContent="確認結果をメールで送ると、決まった基準で確認します。電話や個別相談はありません。";
+      note.textContent="次へ進む場合は、確認結果をメールアプリから送信してください。電話や個別相談はありません。";
       actions.hidden=false;
     }else{
       title.textContent="今の条件では向いていない可能性があります。";
