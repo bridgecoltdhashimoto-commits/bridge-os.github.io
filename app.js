@@ -25,6 +25,7 @@
 
   function value(data,key){return String(data.get(key)||"");}
   function label(group,key){return labels[group][key]||key;}
+  function recipient(){return ["bridge.co.ltd.hashimoto","gmail.com"].join("@");}
 
   function evaluate(data){
     const payment=value(data,"payment_type");
@@ -144,7 +145,7 @@
 
     renderReasons(assessment);
     const subject=encodeURIComponent("BRIDGE Revenue Assurance 4.0｜利用対象確認");
-    mailLink.href="mailto:bridge.co.ltd.hashimoto@gmail.com?subject="+subject+"&body="+encodeURIComponent(applicationText);
+    mailLink.href="mailto:"+recipient()+"?subject="+subject+"&body="+encodeURIComponent(applicationText);
     result.focus();
     result.scrollIntoView({behavior:"smooth",block:"start"});
   });
