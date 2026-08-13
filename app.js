@@ -97,11 +97,8 @@
     const safetyPass=(square==="yes" && outstanding==="yes" && count>0 && total>0 && dispute==="none" && settled==="yes" && contact!=="none");
     if(!safetyPass) return {grade:"C",positive,concerns,total,count};
 
-    // 5万円は利用可否の足切りではなく、Pilot候補の内部優先度にのみ使用する。
-    if(total>=50000 && ["recurring","invoice","advance","ecommerce","online","mixed"].includes(payment)){
-      return {grade:"A",positive,concerns,total,count};
-    }
-    return {grade:"B",positive,concerns,total,count};
+    const suitableStructure=["recurring","invoice","advance","ecommerce","online","mixed"].includes(payment);
+    return {grade:suitableStructure?"A":"B",positive,concerns,total,count};
   }
 
   function buildApplication(data,assessment){
@@ -127,11 +124,13 @@
 
   function renderReasons(assessment){
     reasons.innerHTML="";
-    const items=assessment.positive.concat(assessment.concerns);
-    items.slice(0,6).forEach(function(text,index){
+    const items=[];
+    assessment.positive.slice(0,4).forEach(function(text){items.push({text:text,positive:true});});
+    assessment.concerns.slice(0,2).forEach(function(text){items.push({text:text,positive:false});});
+    items.forEach(function(item){
       const li=document.createElement("li");
-      li.textContent=text;
-      li.className=index<assessment.positive.length?"reason-positive":"reason-concern";
+      li.textContent=item.text;
+      li.className=item.positive?"reason-positive":"reason-concern";
       reasons.appendChild(li);
     });
   }
@@ -149,16 +148,16 @@
     const assessment=evaluate(data);
     applicationText=buildApplication(data,assessment);
     result.className="eligibility-result is-visible grade-"+assessment.grade.toLowerCase();
-    badge.textContent=assessment.grade==="A"?"対象候補です":assessment.grade==="B"?"対象になる可能性があります":"今は対象外の可能性があります";
+    badge.textContent=assessment.grade==="A"?"対象候補です":assessment.grade==="B"?"もう少し確認が必要":"今は対象外の可能性があります";
 
     if(assessment.grade==="A"){
-      title.textContent="Pilot候補として確認する価値が高い状態です。";
-      message.textContent="未回収の実在、安全性、お客様への案内条件が確認できています。";
+      title.textContent="対象候補です。内容を確認します。";
+      message.textContent="未回収の実在、安全性、お客様への案内条件が確認できています。未回収金額は利用可否の足切りではなく、Pilot候補の優先順位を決める材料として確認します。";
       note.textContent="次へ進む場合は、確認結果をメールアプリから送信してください。この段階ではSquareとの接続は行いません。";
       actions.hidden=false;
     }else if(assessment.grade==="B"){
-      title.textContent="対象候補です。内容を確認します。";
-      message.textContent="未回収の安全条件は確認できています。金額や決済構造を含め、Pilot候補として個別に確認します。";
+      title.textContent="対象になる可能性があります。";
+      message.textContent="安全条件は確認できていますが、決済の使い方をもう少し確認する必要があります。";
       note.textContent="次へ進む場合は、確認結果をメールアプリから送信してください。未回収額が小さいことだけで自動的に対象外にはしません。";
       actions.hidden=false;
     }else{
