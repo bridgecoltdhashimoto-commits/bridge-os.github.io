@@ -2,6 +2,7 @@
   "use strict";
   const form=document.getElementById("eligibility-form");
   if(!form) return;
+
   const status=document.getElementById("form-status");
   const result=document.getElementById("eligibility-result");
   const badge=document.getElementById("result-badge");
@@ -12,97 +13,122 @@
   const note=document.getElementById("result-note");
   const mailLink=document.getElementById("open-mail");
   const copyButton=document.getElementById("copy-application");
+  const outstandingSelect=form.elements.outstanding_after_square;
+  const unpaidCount=form.elements.unpaid_count;
+  const unpaidTotal=form.elements.unpaid_total;
   let applicationText="";
 
   const labels={
+    square_active:{yes:"現在利用している",no:"現在利用していない",unknown:"分からない"},
     payment_type:{recurring:"会費・月謝・定期サービス",invoice:"請求書での支払い",advance:"予約前・利用前の支払い",ecommerce:"ネット通販・ECサイトでの販売",online:"オンラインサービスの支払い",mixed:"店頭と店頭以外の両方",pos:"店頭での支払いが中心"},
-    volume:{under100:"100万円未満","100to500":"100万〜500万円","500to1000":"500万〜1,000万円",over1000:"1,000万円以上",unknown:"分からない"},
-    failed:{monthly:"毎月ある",sometimes:"時々ある",unknown:"分からない",rare:"ほとんどない"},
-    contactability:{most:"多くのお客様へ送れる",some:"一部のお客様へ送れる",none:"送れない・分からない"}
+    outstanding_after_square:{yes:"ある",no:"ない",unknown:"分からない"},
+    dispute:{none:"争いはない",some:"争いがあるものを含む",unknown:"分からない"},
+    settled_excluded:{yes:"はい",no:"いいえ",unknown:"分からない"},
+    contactability:{most:"対象のお客様へ案内できる",some:"一部のみ案内できる",none:"案内できない・分からない"}
   };
 
   function value(data,key){return String(data.get(key)||"");}
-  function label(group,key){return labels[group][key]||key;}
+  function label(group,key){return labels[group][key]||key||"未回答";}
   function recipient(){return ["bridge.co.ltd.hashimoto","gmail.com"].join("@");}
+  function numberValue(data,key){
+    const n=Number(value(data,key));
+    return Number.isFinite(n)?n:0;
+  }
+  function yen(n){return Math.round(n).toLocaleString("ja-JP")+"円";}
+
+  function syncUnpaidFields(){
+    const needsAmounts=outstandingSelect && outstandingSelect.value==="yes";
+    if(unpaidCount) unpaidCount.required=needsAmounts;
+    if(unpaidTotal) unpaidTotal.required=needsAmounts;
+    if(!needsAmounts){
+      if(unpaidCount) unpaidCount.value="";
+      if(unpaidTotal) unpaidTotal.value="";
+    }
+  }
+
+  if(outstandingSelect){
+    outstandingSelect.addEventListener("change",syncUnpaidFields);
+    syncUnpaidFields();
+  }
 
   function evaluate(data){
+    const square=value(data,"square_active");
     const payment=value(data,"payment_type");
-    const volume=value(data,"volume");
-    const failed=value(data,"failed");
+    const outstanding=value(data,"outstanding_after_square");
+    const count=numberValue(data,"unpaid_count");
+    const total=numberValue(data,"unpaid_total");
+    const dispute=value(data,"dispute");
+    const settled=value(data,"settled_excluded");
     const contact=value(data,"contactability");
-    let score=0;
     const positive=[];
     const concerns=[];
 
+    if(square==="yes") positive.push("現在Squareを事業で利用しています");
+    else concerns.push(square==="no"?"現在Squareを利用していません":"現在のSquare利用状況を確認できません");
+
     if(["recurring","invoice","advance","ecommerce","online"].includes(payment)){
-      score+=3;
-      positive.push(payment==="ecommerce"?"ネット通販・ECサイトでSquareを使っています":"店頭以外での支払いを多く使っています");
+      positive.push("店頭以外で支払いが発生する決済構造です");
     }else if(payment==="mixed"){
-      score+=1; positive.push("店頭以外での支払いも使っています");
+      positive.push("店頭以外でのSquare利用もあります");
     }else{
-      concerns.push("店頭での支払いが中心です");
+      concerns.push("店頭決済が中心です");
     }
 
-    if(volume==="over1000"){
-      score+=3; positive.push("店頭以外のSquare売上が月1,000万円以上です");
-    }else if(volume==="500to1000"){
-      score+=2; positive.push("店頭以外のSquare売上が月500万円以上です");
-    }else if(volume==="100to500"){
-      score+=1; positive.push("店頭以外でもSquare売上があります");
+    if(outstanding==="yes"){
+      positive.push("Squareの案内後も未回収が残っています");
+      if(count>0) positive.push("未回収件数を確認できます（概算"+Math.round(count)+"件）");
+      else concerns.push("未回収件数を確認できません");
+      if(total>0) positive.push("未回収総額を確認できます（概算"+yen(total)+"）");
+      else concerns.push("未回収総額を確認できません");
     }else{
-      concerns.push("店頭以外のSquare売上が少ない、または分かりません");
+      concerns.push(outstanding==="no"?"Squareの案内後に残っている未回収はありません":"Squareの案内後も未回収が残っているか確認できません");
     }
 
-    if(failed==="monthly"){
-      score+=3; positive.push("支払い失敗が毎月あります");
-    }else if(failed==="sometimes"){
-      score+=2; positive.push("支払い失敗が時々あります");
-    }else if(failed==="unknown"){
-      concerns.push("支払い失敗があるか分かりません");
-    }else{
-      concerns.push("支払い失敗がほとんどありません");
-    }
+    if(dispute==="none") positive.push("金額についてお客様との争いはありません");
+    else concerns.push(dispute==="some"?"金額について争いがある取引を含みます":"金額について争いがないか確認できません");
 
-    if(contact==="most"){
-      score+=3; positive.push("多くのお客様へ案内を送れます");
-    }else if(contact==="some"){
-      score+=1; positive.push("一部のお客様へ案内を送れます");
-    }else{
-      concerns.push("お客様へ支払い案内を送れません");
-    }
+    if(settled==="yes") positive.push("支払い済み・返金済みを除外できます");
+    else concerns.push(settled==="no"?"支払い済み・返金済みを確実に除外できません":"支払い済み・返金済みを除外できるか確認できません");
 
-    if(contact==="none" || payment==="pos" || failed==="rare") return {grade:"C",positive,concerns};
-    if(score>=9) return {grade:"A",positive,concerns};
-    if(score>=5) return {grade:"B",positive,concerns};
-    return {grade:"C",positive,concerns};
+    if(contact==="most") positive.push("対象のお客様へ正当に支払い案内できます");
+    else if(contact==="some") positive.push("一部の対象のお客様へ正当に支払い案内できます");
+    else concerns.push("対象のお客様へ支払い案内できません");
+
+    const safetyPass=(square==="yes" && outstanding==="yes" && count>0 && total>0 && dispute==="none" && settled==="yes" && contact!=="none");
+    if(!safetyPass) return {grade:"C",positive,concerns,total,count};
+
+    // 5万円は利用可否の足切りではなく、Pilot候補の内部優先度にのみ使用する。
+    if(total>=50000 && ["recurring","invoice","advance","ecommerce","online","mixed"].includes(payment)){
+      return {grade:"A",positive,concerns,total,count};
+    }
+    return {grade:"B",positive,concerns,total,count};
   }
 
   function buildApplication(data,assessment){
     return [
-      "BRIDGE Revenue Assurance 4.0｜利用確認",
+      "BRIDGE Revenue Assurance 4.0｜無料対象確認",
       "",
       "確認結果: "+assessment.grade,
       "会社・店舗名: "+value(data,"company"),
-      "担当者名: "+value(data,"name"),
       "メール: "+value(data,"email"),
+      "現在のSquare利用: "+label("square_active",value(data,"square_active")),
       "Squareの主な使い方: "+label("payment_type",value(data,"payment_type")),
-      "毎月の店頭以外のSquare売上: "+label("volume",value(data,"volume")),
-      "支払い失敗の回数: "+label("failed",value(data,"failed")),
-      "お客様への連絡: "+label("contactability",value(data,"contactability")),
+      "Squareの案内後も未回収: "+label("outstanding_after_square",value(data,"outstanding_after_square")),
+      "過去30日程度の未回収件数（概算）: "+(assessment.count>0?Math.round(assessment.count)+"件":"未確認"),
+      "過去30日程度の未回収総額（概算）: "+(assessment.total>0?yen(assessment.total):"未確認"),
+      "金額についての争い: "+label("dispute",value(data,"dispute")),
+      "支払い済み・返金済みの除外: "+label("settled_excluded",value(data,"settled_excluded")),
+      "対象顧客への支払い案内: "+label("contactability",value(data,"contactability")),
       "",
-      "確認した内容:",
-      "- 事業者としての利用",
-      "- 利用条件と個人情報の取扱い",
-      "- 取り戻せた時だけ8％",
-      "- 保存カードへの勝手な再請求なし",
-      "- 必ず取り戻せる保証はなし"
+      "※カード情報・Squareのパスワード・Payment ID等は送っていません。",
+      "※この確認だけでは費用・Square接続・支払い処理は始まりません。"
     ].join("\n");
   }
 
   function renderReasons(assessment){
     reasons.innerHTML="";
     const items=assessment.positive.concat(assessment.concerns);
-    items.slice(0,5).forEach(function(text,index){
+    items.slice(0,6).forEach(function(text,index){
       const li=document.createElement("li");
       li.textContent=text;
       li.className=index<assessment.positive.length?"reason-positive":"reason-concern";
@@ -113,6 +139,7 @@
   form.addEventListener("submit",function(event){
     event.preventDefault();
     status.textContent="";
+    syncUnpaidFields();
     if(!form.reportValidity()){
       status.textContent="入力していない項目があります。";
       return;
@@ -122,27 +149,27 @@
     const assessment=evaluate(data);
     applicationText=buildApplication(data,assessment);
     result.className="eligibility-result is-visible grade-"+assessment.grade.toLowerCase();
-    badge.textContent=assessment.grade==="A"?"使える可能性が高い":assessment.grade==="B"?"もう少し確認が必要":"今は向いていない可能性";
+    badge.textContent=assessment.grade==="A"?"対象候補です":assessment.grade==="B"?"対象になる可能性があります":"今は対象外の可能性があります";
 
     if(assessment.grade==="A"){
-      title.textContent="使える可能性が高いです。";
-      message.textContent="支払いの方法、支払い失敗の回数、お客様へ案内できる条件がそろっています。";
-      note.textContent="次へ進む場合は、確認結果をメールアプリから送信してください。送信後、受付順に内容を確認します。";
+      title.textContent="Pilot候補として確認する価値が高い状態です。";
+      message.textContent="未回収の実在、安全性、お客様への案内条件が確認できています。";
+      note.textContent="次へ進む場合は、確認結果をメールアプリから送信してください。この段階ではSquareとの接続は行いません。";
       actions.hidden=false;
     }else if(assessment.grade==="B"){
-      title.textContent="もう少し確認が必要です。";
-      message.textContent="使える可能性はありますが、対象になる支払いの量や、お客様へ案内できる範囲を確認する必要があります。";
-      note.textContent="次へ進む場合は、確認結果をメールアプリから送信してください。電話や個別相談はありません。";
+      title.textContent="対象候補です。内容を確認します。";
+      message.textContent="未回収の安全条件は確認できています。金額や決済構造を含め、Pilot候補として個別に確認します。";
+      note.textContent="次へ進む場合は、確認結果をメールアプリから送信してください。未回収額が小さいことだけで自動的に対象外にはしません。";
       actions.hidden=false;
     }else{
-      title.textContent="今の条件では向いていない可能性があります。";
-      message.textContent="支払い失敗、お客様への連絡、店頭以外での支払いのどれかが足りません。";
-      note.textContent="条件が変わった時は、もう一度確認できます。";
+      title.textContent="今の条件では対象外の可能性があります。";
+      message.textContent="Square利用、未回収の実在、争いの有無、支払い済み・返金済みの除外、連絡可否のいずれかを確認できません。";
+      note.textContent="条件が変わった時は、もう一度確認できます。カード情報やSquareのパスワードは送らないでください。";
       actions.hidden=true;
     }
 
     renderReasons(assessment);
-    const subject=encodeURIComponent("BRIDGE Revenue Assurance 4.0｜利用確認");
+    const subject=encodeURIComponent("BRIDGE Revenue Assurance 4.0｜無料対象確認");
     mailLink.href="mailto:"+recipient()+"?subject="+subject+"&body="+encodeURIComponent(applicationText);
     result.focus();
     result.scrollIntoView({behavior:"smooth",block:"start"});
